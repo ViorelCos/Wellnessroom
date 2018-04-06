@@ -63,7 +63,7 @@ module.exports = function (options) {
                 "July", "August", "September", "October", "November", "December"
             ];
             const month = monthNames[date.getMonth()];
-            const day = date.getDay();
+            const day = date.getDate();
             const year = date.getFullYear();
             const dob = month + " " + day + ", " + year;
 
