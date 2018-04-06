@@ -1,0 +1,157 @@
+doctype html
+html(lang='en', ng-app='wellnessroom')
+  head
+    // SITE TITTLE
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    base(href="/")
+    title(ng-bind="pageTitle + ' | WellnessRoom'")
+    // PLUGINS CSS STYLE
+    link(href='/plugins/jquery-ui/jquery-ui.min.css', rel='stylesheet')
+    link(href='node_modules/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
+    link(href='node_modules/font-awesome/css/font-awesome.min.css', rel='stylesheet')
+    link(href='/plugins/selectbox/select_option1.css', rel='stylesheet')
+    link(href='/plugins/slick/slick.css', rel='stylesheet', media='screen')
+    link(href='/plugins/slick/slick-theme.css', rel='stylesheet', media='screen')
+    link(href='/plugins/fill-icons/css/fill-icons.css', rel='stylesheet')
+    link(href='node_modules/prismjs/themes/prism-okaidia.css', rel='stylesheet')
+    link(href='node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.css', rel='stylesheet')
+    link(href='node_modules/font-awesome-animation/dist/font-awesome-animation.min.css', rel='stylesheet')
+    link(href='/plugins/selectbox/select_option1.css', rel='stylesheet')
+    link(href='/plugins/animate.css', rel='stylesheet')
+    link(href='/node_modules/weather-icons/css/weather-icons.min.css', rel='stylesheet')
+    // GOOGLE FONT
+    // CUSTOM CSS
+    link(href='/css/landing.css', rel='stylesheet')
+    link(href='/css/style.css', rel='stylesheet')
+    link#option_color(href='/css/default.css', rel='stylesheet')
+    link(href='/css/wellnessroom.css', rel='stylesheet')
+    // FAVICON
+    link(href='/img/favicon.png', rel='shortcut icon')
+    // HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      script(src='//oss.maxcdn.com/respond/1.4.2/respond.min.js')
+  body#body.wellnessroom.static.landing(ng-controller="MainCtrl", ng-style="{'background-image': 'url(' + backgroundImage + ')'}")
+    script.
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '2040333052874226',
+          xfbml      : true,
+          version    : 'v2.12'
+        });
+        FB.AppEvents.logPageView();
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "https://connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    #loader-wrapper
+        #loader
+        .loader-section.section-left
+        .loader-section.section-right
+    // HEADER
+    header#pageTop.header
+      // NAVBAR
+      nav.navbar.navbar-toggleable-sm.main-nav
+        .container
+          button.navbar-toggler.navbar-toggler-right(id = 'menu-btn' type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='true', aria-label='Toggle navigation')
+            span.burger-menu.icon-toggle
+              i.fa.fa-bars
+          a.logo.navbar-brand(href='#')
+            img(src='img/logo.png', alt='logo')
+          #navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.ml-auto
+              li.nav-item.dropdown.drop_single
+                a.nav-link.dropdown-toggle(id = 'home-btn' href='/#!/' data-toggle="collapse" data-target=".nav-collapse")
+                  | Home 
+                  span.sr-only (current)
+                //- ul.dropdown-menu.dd_first
+                //-   li
+                //-     a(href='/#!/') Search
+              li.nav-item.dropdown.drop_single
+                if user
+                    a.nav-link.dropdown-toggle(data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false', href='#')
+                      | #{name}
+                      span.sr-only (current)
+                    ul.dropdown-menu.dd_first
+                      li
+                        a(href='/#!/profile') Profile
+                      li
+                        a(href='/#!/appointments-list') Appointments
+                      if isClient == 'true'
+                          li
+                            a(href='/#!/subscriptions') Subscriptions
+                      li
+                        a(href='#', ng-click="logout()") Logout
+                else
+                    a.nav-link.dropdown-toggle(data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false', href='#')
+                      | Login 
+                      span.sr-only (current)
+                    ul.dropdown-menu.dd_first
+                      li
+                        a(href='/#!/login') Login 
+                        a(href='/#!/signup') Signup
+              if !user
+                  li.nav-item.dropdown.drop_single
+                    a.nav-link.dropdown-toggle(data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false', href='#')
+                      span.healthcare-professionals-menu Healthcare Professionals
+                      span.sr-only (current)
+                    ul.dropdown-menu.dd_first
+                      li
+                        a(href='/#!/login/hcp') Login
+                        a(href='/#!/signup/hcp') Signup
+    block main-wrapper
+    // FOOTER
+    footer.footer
+      .container
+        .row
+          // COPY RIGHT
+          .col-md-6.offset-md-3
+            ul.list-inline.socialLink.text-center
+              li.list-inline-item
+                a(href='//www.facebook.com/WellnessRoom-147684932589305/', target="blank")
+                  i.fa.fa-facebook(aria-hidden='true')
+              li.list-inline-item
+                a(href='//www.instagram.com/wellnessroom.ca', target="blank")
+                  i.fa.fa-instagram(aria-hidden='true')
+      .container.mt-3 
+        .row
+          .col-md-8.offset-md-2.offset-0.text-center
+            ul.list-inline.text-center
+              li.list-inline-item.mr-3
+                a(href='/#!/about') About
+              li.list-inline-item.mr-3
+                a(href='/#!/privacy-policy') Privacy Policy
+              li.list-inline-item.mr-3
+                a(href='/#!/subscription-packages') Subscription Packages
+      .container.mt-3 
+        .row
+          .col-md-6.offset-md-3
+            .copyRight_text.text-center
+              p.small
+                | WellnessRoom &copy; 2018. All Rights Reserved by 
+                a(href='http://wellnessroom.ca/', target='_blank') WellnessRoom
+                | .
+    // JAVASCRIPTS
+    script(src='//maps.googleapis.com/maps/api/js?key=AIzaSyBEDfNcQRmKQEyulDN8nGWjLYPm8s4YB58', async='', defer='')
+    script(src='/dist/deps.js')
+    script(src='/plugins/jquery-ui/jquery-ui.min.js')
+    script(src='/plugins/slick/slick.min.js')
+    script(src='/plugins/syotimer/jquery.syotimer.js')
+    script(src='/plugins/selectbox/jquery.selectbox-0.1.3.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js')
+    script(src='//js.stripe.com/v3/')
+    script(src='/js/custom.js')
+    script(src='/dist/wellnessroom.js')
+    script.
+        window.CLIENT_NAME = '#{name}';
+        window.IS_CLIENT = #{isClient};
+        window.USER_ID = '#{user}';
+        window.PATH = '#{path}';

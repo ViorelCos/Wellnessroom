@@ -1,0 +1,98 @@
+<div style="width:100%;" class="container">
+  <div style="max-width:30%; margin:auto; margin-top:20px; display:inline-block" class="search-bar col-md-2 mx-1" ng-if="serviceProviders.length">
+    <div class="row search-bar-time">
+      <div class="col-12 search-bar-top">
+        <div class="row">
+          <div class="my-2 col-12 bar text-center">
+            <div class="mb-2 col-sm-12 collapse-sm text-next-to-dropdown hidden-sm-down"><i class="fa fa-clock-o"></i> <span>Availability</span></div>
+            <div class="dropdown collapse-sm" style="float:left; width: 48%; margin-right: 4px;">
+              <!-- ng-controller="SearchMapCtrl" remove this from bottom button -->
+              <button  class="btn btn-sm dropdown-toggle" style="width: 100%" type="button" id="dropdownMenuButtonDate" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <!-- <script type="text/javascript">
+                  angular.element(document.querySelector('[ng-controller="SearchMapCtrl"]')).scope().xer='sdsd'
+                </script> -->
+                <small ng-bind-html="selectedDate.value"></small>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonDate">
+                <a class="dropdown-item" href="" ng-repeat="date in dates" ng-click="filterDate(date)"><small>{{date.value}}</small></a>
+              </div>
+            </div>
+            <div class="dropdown collapse-sm" style="float:left; width: 49%">
+              <button class="btn btn-sm dropdown-toggle" style="width: 100%" type="button" id="dropdownMenuButtonTime" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <small ng-bind-html="selectedTime.value"></small>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonTime">
+                <a class="dropdown-item" href="" ng-repeat="time in times" ng-click="filterTime(time)"><small ng-bind-html="time.value"></small></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row search-bar-map">
+      <div class="col-md-12">
+        <div class="row">
+          <gm-map options="{center: [latitude, longitude], zoom: 9, mapTypeId: google.maps.MapTypeId.ROADMAP}">
+            <gm-marker class="my-location" options="{position:  [latitude, longitude]}">
+            </gm-marker>
+            <gm-marker ng-repeat="client in clients | clientFilter:selectedDate:selectedTime:selectedRatings:serviceProvidersMap" class="my-location" options="{position:  [client.coords[0], client.coords[1]]}">
+            </gm-marker>
+          </gm-map>
+        </div>
+      </div>
+    </div>
+    <div class="row search-bar-rating">
+      <div class="col-md-12 search-bar-bottom">
+        <div class="row">
+          <div class="mx-2 my-2 col-12">
+            <div class="mb-2"><i class="fa fa-star-o mb-1"></i> Rating</div>
+            <div ng-repeat="rating in ratings">
+              <input type="checkbox" ng-change="filterRating(rating.value)" ng-model="dummy">
+              <star-rating-comp rating="rating.value" read-only="true" size="'medium'"></star-rating-comp>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width:100%;margin-left:0px;" class="row">
+    <div style="width:50%;margin-left:50%;" class="padding search-results">
+      <div class="row" ng-if="clients && !clients.length">
+        <div class="col-sm-10 offset-sm-1">
+          <div class="about_detail-text">
+            <p class="text-center">No service providers found.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row" ng-if="clients.length && serviceProviders">
+        <div style="margin-top:20px;" class="about_detail-text">
+          <ul class="list-group">
+            <li class="list-group-item spaced-list" ng-style="{ 'border' : (serviceProvider.premium && serviceProvider.firstOpening) ? '1px solid #3366CC' : '0%' }" ng-repeat="serviceProvider in serviceProviders | spFilter:selectedDate:selectedTime:selectedRatings:clientsMap | orderBy:'-premium'" ng-if="serviceProvider.firstOpening">
+              <div class="card">
+                <div class="card_img text-center image-container">
+                  <span class="image-container-helper"></span>
+                  <img src="{{serviceProvider.image || '/site/img/profile-empty.png'}}" alt="Card image"/>
+                </div>
+                <div class="card-block">
+                  <a href="#"><h3 class="card-title">{{serviceProvider.name}}</h3></a>
+                  <p><strong>{{shortAddress(clientsMap[serviceProvider._id].address)}}</strong></p>
+                  <p>{{servicesMap[selectedService].name}} <br/>(<star-rating-comp class="star-rating" rating="serviceProvider.rating" disabled="true"></star-rating-comp>)</p>
+                  <!-- <p class="card-text">{{utils.limitTo(serviceProvider.about, 75)}}</p> -->
+                  <div class="card-text">
+                    <p ng-show="serviceProvider.firstOpening">
+                      <i class="fa fa-clock-o"> {{formatDate(serviceProvider.firstOpening)}}</i>
+                    <p>
+                    <p>
+                      <i>{{(clientsMap[serviceProvider._id].distance / 1000).toFixed(2)}} Kilometers Away</i>
+                    </p>
+                  </div>
+                  <a href="/#!/clientpage/{{clientsMap[serviceProvider._id]._id}}/serviceprovider/{{serviceProvider._id}}" class="btn btn-primary">Select</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

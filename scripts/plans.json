@@ -1,0 +1,43 @@
+[{
+    "name": "Single",
+    "description": "single",
+    "priceCanadianCents": 499,
+    "serviceProviders": 1,
+    "postings": 0,
+    "premium": false
+}, {
+    "name": "Multiple",
+    "description": "multiple",
+    "priceCanadianCents": 1499,
+    "serviceProviders": 5,
+    "postings": 0,
+    "premium": false
+}, {
+    "name": "Max",
+    "description": "max",
+    "priceCanadianCents": 2499,
+    "serviceProviders": 10,
+    "postings": 0,
+    "premium": false
+}, {
+    "name": "Gold",
+    "description": "single",
+    "priceCanadianCents": 1499,
+    "serviceProviders": 1,
+    "postings": 0,
+    "premium": true
+}, {
+    "name": "Platinum",
+    "priceCanadianCents": 2999,
+    "description": "multiple",
+    "serviceProviders": 5,
+    "postings": 0,
+    "premium": true
+}, {
+    "name": "Diamond",
+    "description": "max",
+    "priceCanadianCents": 4999,
+    "serviceProviders": 10,
+    "postings": 0,
+    "premium": true
+}]

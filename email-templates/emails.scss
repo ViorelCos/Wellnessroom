@@ -1,0 +1,29 @@
+@import 'settings';
+@import '../node_modules/foundation-emails/scss/foundation-emails';
+
+@media all {
+// typography
+  a:hover { color: $anchor-color-hover }
+  a:active { color: $anchor-color-active }
+  a:visited { color: $anchor-color-visited }
+// buttons
+  table.button:hover, table.button:visited, table.button:active {
+    table a { border-width: 0px }
+    table td {
+      background: darken($button-background, 10%) !important;
+      color: $button-color !important;
+    }
+  }
+  table.button.secondary:hover table td {
+    background: lighten($secondary-color, 10%) !important
+  }
+  table.button.success:hover table td {
+    background: darken($success-color, 10%) !important
+  }
+  table.button.alert:hover table td {
+    background: darken($alert-color, 10%) !important
+  }
+  table.button.warning:hover table td {
+    background: darken($warning-color, 10%) !important
+  }
+}

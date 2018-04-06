@@ -1,0 +1,211 @@
+<div class="container profile">
+  <div class="row">
+    <div class="col-sm-8 offset-sm-2 col-xs-12 text-center">
+      <div class="sectionTitle">
+        <h2>{{user.fullname}}</h2>
+      </div>
+      <div class="seperator">
+        <img src="site/img/snowflake.svg"/>
+      </div>
+    </div>
+  </div>
+  <div class="row" ng-if="isClient">
+    <div class="image_container text-center">
+      <div class="client-image profile-image col-10" ng-style="{'background-image': 'url(' + user.image + ')'}" data-toggle="modal" data-target="#cropperModal">
+        <img class="spanner-image" src="{{user.image}}">
+        </img>
+      </div>
+    </div>
+  </div>
+  <div class="row" ng-if="isClient">
+    <x-cropper client="user" save="saveUser"></x-cropper>
+  </div>
+  <div class="row" ng-if="isClient">
+    <div class="m-auto">Please upload an image of your business above</div>
+  </div>
+  <form>
+    <div class="row">
+      <div class="form-group offset-md-3 col-md-6">
+        <label>{{isClient ? 'Business Name' : 'Full Name'}}</label>
+        <input class="form-control" ng-model="user.fullname" placeholder="{{isClient ? 'Business Name' : 'Full Name'}}">
+      </div>
+      <div class="about-text-container form-group offset-md-3 col-md-6" ng-if="isClient">
+        <textarea class="about-text form-control" rows="10" ng-model="user.about" placeholder="Business Description"></textarea>
+      </div>
+      <div class="form-group offset-md-3 col-md-3">
+        <label>Phone Number</label>
+        <input class="form-control" ng-model="user.phone" placeholder="Phone Number" type="phone">
+      </div>
+      <div class="form-group col-md-3" ng-if="isClient">
+        <label>Website</label>
+        <input class="form-control" ng-model="user.website" placeholder="Website">
+      </div>
+      <div class="form-group offset-md-3 col-md-3" ng-if="isClient">
+        <label>Facebook Page</label>
+        <input class="form-control" ng-model="user.facebook" placeholder="Facebook Page">
+      </div>
+      <div class="form-group col-md-3" ng-if="isClient">
+        <label>Instagram Page</label>
+        <input class="form-control" ng-model="user.instagram" placeholder="Instagram Page">
+      </div>
+      <div class="form-group offset-md-3 col-md-3" ng-if="isClient">
+        <input class="mx-2" ng-model="user.newUsersCanBook" type="checkbox">
+        <label class="inline-label">If unselected, new patients will be notified to call the clinic to book appointment.</label>
+      </div>
+      <div class="form-group col-md-3" ng-if="isClient">
+        <label>Hours of Operation</label>
+        <input class="form-control" ng-model="user.hoursOfOperation" placeholder="9-17 Mon-Fri, 10-14 Sat">
+      </div>
+      <div class="form-group col-md-6 offset-md-3" ng-if="!isClient">
+        <label>Date of Birth</label>
+        <input class="form-control" type="date" autocomplete="off" ng-model="user.dob" placeholder="Date of Birth">
+      </div>
+      <div class="form-group col-md-6 offset-md-3">
+        <label>Address</label>
+        <input id="location-search" class="form-control" type="text" autocomplete="off" ng-model="user.address" placeholder="Address" select-on-click>
+      </div>
+      <div class="form-group col-md-3 offset-md-3" ng-if="isClient">
+        <select class="form-control" readonly disabled>
+          <option>Canada</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3" ng-if="isClient">
+        <select class="form-control" ng-model="user.timezoneOffset" ng-options="timezone.value as timezone.label for timezone in timezones">
+          <option ng-show="!user.timezoneOffset" value="">Select time-zone</option>
+        </select>
+      </div>
+      <button class="btn btn-primary offset-md-8" ng-click="saveUser()">Save</button>
+    </div>
+  </form>
+  <div ng-if="isClient">
+    <div class="row">
+      <div class="col-sm-8 offset-sm-2 col-xs-12 text-center">
+        <span class="h4">Services Available</span>
+      </div>
+    </div>
+    <p class="devider devider_narrow devider_thik devider_primary"></p>
+    <div class="row">
+      <div class="col-md-6 offset-sm-3">
+        <ul class="list-group no-border">
+          <li class="list-group-item" ng-repeat="service in providedServices">
+            <a href="#">
+              <i class="fa fa-dot-circle-o"></i> {{service.name}} <i class="fa fa-trash remove-icon" ng-click="removeService(service._id)"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 offset-sm-3">
+        <select class="form-control" ng-options="service._id as service.name for service in services" ng-model="selectedService">
+        </select>
+      </div>
+      <div class="col-md-2">
+        <a class="btn btn-default btn-primary" ng-click="addService(selectedService)">Add Service</a>
+      </div>
+    </div>
+    <p class="devider devider_full">
+    <div class="row">
+      <div class="col-sm-8 offset-sm-2 col-xs-12 text-center">
+        <span class="h4">Service Providers</span>
+        <p>Please click on the name below to add/edit profile and schedule</p>
+      </div>
+    </div>
+    <p class="devider devider_narrow devider_thik devider_primary"></p>
+    <div class="row">
+      <div class="col-md-6 offset-sm-3">
+        <ul class="list-group no-border">
+          <li class="list-group-item" ng-repeat="serviceProviderId in client.serviceProviders">
+            <a class="col-6 list-link" href="/#!/provider-profile/{{serviceProviderId}}">
+              <i class="fa fa-chevron-circle-right"></i>{{serviceProvidersMap[serviceProviderId].name}} ({{servicesMap[serviceProvidersMap[serviceProviderId].service].name}})
+            </a>
+            <i class="fa fa-trash remove-icon action-icon" ng-click="removeServiceProvider(serviceProviderId)"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <input class="form-control" ng-model="serviceProviderName" placeholder="Name of Health Care Professional"/>
+      </div>
+      <div class="col-md-4">
+        <select class="form-control" ng-options="service._id as service.name for service in providedServices" ng-model="selectedProvidedService">
+        </select>
+      </div>
+      <div class="col-md-2">
+        <a class="btn btn-default btn-primary" ng-click="addServiceProvider(serviceProviderName, selectedProvidedService)">Add Service Provider</a>
+      </div>
+    </div>
+    <!--
+    <div class="row">
+      <div class="col-sm-8 offset-sm-2 col-xs-12 text-center">
+        <span class="h4">Map</span>
+      </div>
+    </div>
+    <p class="devider devider_narrow devider_thik devider_primary"></p>
+    <div class="row" ng-if="client">
+      <div class="offset-md-3 col-md-6">
+        <gm-map options="{center: client.coords, zoom: 14, mapTypeId: google.maps.MapTypeId.ROADMAP}">
+          <gm-marker class="my-location" options="{position: client.coords, draggable: true}" ng-model="client.coords" on-dragend="updateCoords(marker.getPosition())">
+          </gm-marker>
+        </gm-map>
+      </div>
+    </div>
+    -->
+    <p class="devider devider_full">
+    <div class="row">
+      <div class="col-sm-8 offset-sm-2 col-xs-12 text-center">
+        <span class="h4">Service Menu</span>
+      </div>
+    </div>
+    <p class="devider devider_narrow devider_thik devider_primary"></p>
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <ul class="list-group no-border">
+          <li class="list-group-item" ng-repeat="pricePlan in user.pricePlans">
+            <div class="row mt-2">
+              <div class="col-md-6">
+                <input class="form-control" placeHolder="Name" ng-model="pricePlan.name">
+              </div>
+              <div class="col-md-6">
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1">$</span>
+                  <input type="text" class="form-control" placeholder="Price" aria-describedby="basic-addon1" ng-model="pricePlan.price">
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-md-8">
+                <textarea class="form-control about-text" placeholder="Description" row="10" ng-model="pricePlan.description"/>
+              </div>
+              <div class="col-md-4">
+                <a style="width:150px;" class="btn btn-danger" ng-click="deletePricePlan($index)">Delete Service</a>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row mt-2">
+              <div class="col-md-6">
+                <input class="form-control" placeholder="Name" ng-model="newName">
+              </div>
+              <div class="col-md-6">
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1">$</span>
+                  <input type="text" class="form-control" placeholder="Price" aria-describedby="basic-addon1" ng-model="newPrice">
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-md-8">
+                <textarea class="form-control about-text" placeholder="Description" row="10" ng-model="newDescription"/>
+              </div>
+              <div class="col-md-4">
+                <a style="width:150px;" class="btn btn-primary" ng-click="addPricePlan(newName, newPrice, newDescription)">Add Service</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

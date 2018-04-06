@@ -1,0 +1,35 @@
+<div class="container main-home">
+  <div class="row mb-2">
+    <div style="margin-left:20%;width:60%;" class="display-single_element">
+      <h3 class="form_title">Sign Up Form</h3>
+      <form  class="register" ng-if="googleRecaptchaPublicKey" ng-submit="signup(fields)">
+        <div class="row">
+          <div class="form-group col-md-12 input-icon">
+            <div class="input-group-addon"><i class="fa fa-user"></i></div>
+            <input type="text" class="form-control" id="uname" aria-describedby="fullName" placeholder="{{isHcp ? 'Business Name' : 'Full Name'}}" ng-model="fields.fullname">
+          </div>
+          <div class="form-group col-md-12 input-icon">
+            <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" ng-model="fields.email">
+          </div>
+          <div class="form-group col-md-12 input-icon">
+            <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+            <input type="password" class="form-control" id="password" placeholder="Password" ng-model="fields.password">
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col-md-12 g-recaptcha" vc-recaptcha key="googleRecaptchaPublicKey" ng-model="fields.recaptchaResponse"></div>
+        </div>
+        <button type="submit" class="btn btn-default btn-primary btn-block">Sign Up</button>
+        <div class="row">
+          <div class="form-check col-md-6">
+          </div>
+          <div class="text-right">
+            <a href="/#!/forgot-password" class="btn-link">Forgot password ?</a>
+          </div>
+        </div>
+      </form>
+      <p class="form-footer">Already have an Account? <a href="{{loginLink}}" class="btn-link text-primary">Log in</a></p>
+    </div>
+  </div>
+</div>

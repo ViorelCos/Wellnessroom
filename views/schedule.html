@@ -1,0 +1,60 @@
+<div>
+  <br>
+  <ul class="nav nav-tabs nav-justified bar_tabs text-center">
+    <span class="d-block d-sm-none"><i class="custom-icon spaced-icon fa fa-2x fa-chevron-up" ng-style="{color: windowStart === 0 && 'lightgray'}" ng-click="moveDayWindow(-1)"></i></span>
+    <span class="d-none d-sm-block offset-scheduling-arrow"><i class="custom-icon spaced-icon fa fa-2x fa-chevron-left" ng-style="{color: windowStart === 0 && 'lightgray'}" ng-click="moveDayWindow(-1)"></i></span>
+    <li class="nav-item" ng-repeat="day in daysWindow">
+      <a class="nav-link" ng-class="{active: day === daySelected}" href="" ng-click="selectDay(day)">{{calendar(day)}}</a>
+    </li>
+    <span class="d-block d-sm-none"><i class="custom-icon spaced-icon fa fa-2x fa-chevron-down" ng-style="{color: windowStart === days.length - 1 - DAYS_WINDOW && 'lightgray'}" ng-click="moveDayWindow(1)"></i></span>
+    <span class="d-none d-sm-block trailing-scheduling-arrow"><i class="custom-icon spaced-icon fa fa-2x fa-chevron-right" ng-style="{color: windowStart === days.length - 1 - DAYS_WINDOW && 'lightgray'}" ng-click="moveDayWindow(1)"></i></span>
+  </ul>
+  <div class="tab-content" id="scheduleContent">
+    <div class="tab-pane fade show active" id="today" role="tabpanel" aria-labelledby="today-tab">
+      <div class="row">
+        <span class="schedule-period col-md-2 col-12"><i class="wi wi-fw wi-horizon-alt"></i> Morning</span>
+        <div class="col-md-10 col-12">
+          <div class="row mt-1" ng-repeat="quad in morningSlotsQuads(daySelected)">
+            <div class="col-md-3 col-3 px-md-1 px-0" ng-repeat="(key, value) in quad">
+              <span
+                class="btn slot-button"
+                ng-style="hideBooked && (value.booked || value.overlapped) && {display: 'none'}"
+                ng-click="clickHandler(value)"
+                ng-class="classes(value)">{{key}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="devider devider_full">
+      <div class="row">
+        <span class="schedule-period col-md-2"><i class="wi wi-fw wi-day-sunny"></i> Afternoon</span>
+        <div class="col-md-10 col-12">
+          <div class="row mt-1" ng-repeat="quad in afternoonSlotsQuads(daySelected)">
+            <div class="col-md-3 col-3 px-md-1 px-0" ng-repeat="(key, value) in quad">
+              <span
+                class="btn slot-button"
+                ng-style="hideBooked && (value.booked || value.overlapped) && {display: 'none'}"
+                ng-click="clickHandler(value)"
+                ng-class="classes(value)">{{key}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="devider devider_full">
+      <div class="row">
+        <span class="schedule-period offset-non-standard-icon col-md-2"><i class="fa fa-moon-o"></i> Evening</span>
+        <div class="col-md-10 col-12">
+          <div class="row mt-1" ng-repeat="quad in eveningSlotsQuads(daySelected)">
+            <div class="col-md-3 col-3 px-md-1 px-0" ng-repeat="(key, value) in quad">
+              <span
+                class="btn slot-button"
+                ng-style="hideBooked && (value.booked || value.overlapped) && {display: 'none'}"
+                ng-click="clickHandler(value)"
+                ng-class="classes(value)">{{key}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

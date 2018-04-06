@@ -1,0 +1,10 @@
+{
+    "SENDER_EMAIL": "WellnessRoom <info@wellnessroom.ca>",
+    "RECENCY_OF_APPOINTMENT_FOR_SENDING_RATE_MAIL": 7200000,
+    "STRIPE_PUBLIC_KEY": "pk_test_NrBZlZHIgzciJ9h5uGDvE0Bl",
+    "LOGO_URL": "https://serene-chamber-61643.herokuapp.com/img/logo.png",
+    "RECAPTCHA_SITE_KEY": "6LfbMkkUAAAAAC5_4CESd8vB9e-jnjJb7Ue8bLf2",
+    "GOOGLE_CLIENT_ID": "934240198774-ttoafv0munmcnftu5frkjpcmhei2pook.apps.googleusercontent.com",
+    "FACEBOOK_APP_ID": "2040333052874226",
+    "FACEBOOK_APP_SECRET": "02419a3770f5e6c37052d997f4236ada"
+}

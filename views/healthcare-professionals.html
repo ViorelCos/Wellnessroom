@@ -1,0 +1,119 @@
+<div class="main-home">
+  <p class="devider"></p>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 px-2">
+        <iframe height="315" src="https://www.youtube.com/embed/C0DPdy98e4c?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+      <div class="col-md-6">
+        <div class="sectionTitle">
+          <span class="h4">Welcome To</span>
+          <h2>WellnessRoom</h2>
+        </div>
+        <p>WellnessRoom provides a unique subscription based package that provides online scheduling without requiring clients to switch their scheduling systems!</p>
+        <ul class="list-group no-border">
+          <li class="list-group-item no-y-padding"><a><i class="fa fa-dot-circle-o"></i> Post open appointments</a></li>
+          <li class="list-group-item no-y-padding"><a><i class="fa fa-dot-circle-o"></i> Create an online presence</a></li>
+          <li class="list-group-item no-y-padding"><a><i class="fa fa-dot-circle-o"></i> Market yourself to new clients</a></li>
+        </ul>
+        <div class="about_detail-text m-2">
+          <div class="card p-3">
+            <div class="card-block">
+              <div class="mt-2">
+                <p>Let's take the first step and create your account:</p>
+              </div>
+              <div class="mt-2">
+                <a class="btn btn-primary" href="/signup/hcp">Sign Up</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="divider"></p>
+</div>
+<section class="home-service tab bg-sand">
+  <div class="container alternate-gray">
+    <div class="row">
+      <div class="col-12 text-center">
+        <div class="sectionTitle">
+          <span class="h4">We Guide You</span>
+          <h2>Through Every Step</h2>
+        </div>
+      </div>
+
+
+			<div class="col-md-12">
+				<ul class="nav nav-tabs bar-tabs" role="tablist">
+					<li class="nav-item text-center">
+            <a class="nav-link" role="tab" ng-class="{'active': active === 0}" ng-click="active = 0">
+							<h5>Subscription Packages</h5>
+						</a>
+					</li>
+					<li class="nav-item text-center">
+						<a class="nav-link" role="tab" ng-class="{'active': active === 1}" ng-click="active = 1">
+							<h5>Create Your Own Page</h5>
+						</a>
+					</li>
+					<li class="nav-item text-center">
+						<a class="nav-link" role="tab" ng-class="{'active': active === 2}" ng-click="active = 2">
+							<h5>Post Appointments</h5>
+						</a>
+					</li>
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div role="tabpanel" ng-show="active === 0">
+						<div class="row tab-content">
+							<div class="col-xs-6 col-md-6 push-md-6">
+								<div class="service_image">
+									<img src="/img/1.jpg" alt="image">
+								</div>
+							</div>
+							<div class="col-xs-6 col-md-6 pull-md-6">
+								<div class="tab-content_left">
+									<h3>Subscription Packages</h3>
+                  <p>Inexpensive packages for clinics and health care professionals available.</p>
+                  <strong>Choose a subscription package starting from as low as $4.99/month</strong>
+                  <a href="/#!/subscription-packages" class="btn btn-primary btn-default " data-animation="animated zoomIn" data-delay="0.7s">Subscription Packages</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div role="tabpanel" ng-show="active === 1">
+						<div class="row tab-content">
+							<div class="col-xs-6 col-md-6 push-md-6">
+								<div class="service_image">
+									<img src="/img/2.jpg" alt="image">
+								</div>
+							</div>
+							<div class="col-xs-6 col-md-6 pull-md-6">
+								<div class="tab-content_left">
+									<h3>Create Your Own Page</h3>
+                  <p>Clinics and health care professionals alike will have a home page that will showcase their services, hours of operations, locations, reviews and much more!</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div role="tabpanel" ng-show="active === 2">
+						<div class="row tab-content">
+							<div class="col-xs-6 col-md-6 push-md-6">
+								<div class="service_image">
+									<img src="/img/3.jpg" alt="image">
+								</div>
+							</div>
+							<div class="col-xs-6 col-md-6 pull-md-6">
+								<div class="tab-content_left">
+									<h3>Post Appointments</h3>
+                  <p>Subscribe for 1 to as many as 10 health care professionals and post their individual open appointments. Each health care professional will have their own profile page to display their skills, qualifications and reviews.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,133 @@
+<div>
+  <div class="container">
+    <div>
+      <div class="row">
+        <div class="col-12 modal-top-button pull-right">
+          <a href="" class="btn btn-primary" ng-click="startBooking()"> Select</a>
+        </div>
+      </div>
+    </div>
+    <p class="devider devider_full">
+    <p class="text-center">Select a time slot to book an appointment</p>
+    <x-schedule utils="sUtils" availability="false" slots="slotsMap" appointments="allAppointments" durations="false" selected-slot="selected" day-selected="daySelected" hide-booked="true" hide-past="true"></x-schedule>
+    <x-duration-picker selected-slot="selected" on-duration-update="onUpdateDuration" on-clear="clearSlot" slot-durations="durations" pick-mode="true"></x-duration-picker>
+  </div>
+  <div id="appointmentContactModal" class="modal overflown-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg animated fadeInDown" data-animation="fadeInDown">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="container modal-item">
+            <div class="container">
+              <div>
+                <div class="row">
+                  <div class="col-12 modal-top-button pull-right">
+                    <a href="" class="btn btn-primary" ng-click="book()"><i class="fa fa-bolt"></i> Request Appointment</a>
+                  </div>
+                </div>
+              </div>
+              <div class="m-2 text-center">
+                <div>
+                  <p>Appointment on {{formatDate(date)}}.</p>
+                  <p>{{serviceProvider.name}}</p>
+                  <p>{{client.address}}</p>
+                </div>
+              </div>
+              <div class="m-2 text-center">
+                <p class="card-text">Please provide some additional information to help us with your booking.</p>
+              </div>
+              <div class="row" ng-show="!newUsersCanBook">
+                <div class="form-group offset-md-3 col-md-6">
+                  <label>I am a returning patient</label>
+                  <input class="mx-2" ng-model="contacts.returningUser" type="checkbox">
+                </div>
+              </div>
+              <p ng-if="errorMessage" style="color: red;text-align: center;">{{errorMessage}}</p>
+              <!-- Hack with contacts.phone to avoid disappearing phone -->
+              <div class="row" ng-show="!user.phone">
+                <div class="form-group offset-md-3 col-md-6">
+                  <label>Phone Number</label>
+                  <input class="form-control" ng-model="contacts.phone" placeholder="Phone Number" type="phone" required>
+                </div>
+              </div>
+              <div class="row" ng-show="!user.dob">
+                <div class="form-group offset-md-3 col-md-6" >
+                  <label>Date of Birth</label>
+                  <input class="form-control" ng-model="contacts.dob" placeholder="Date of Birth" type="date" required>
+                </div>
+              </div>
+              <div class="row" ng-show="isHomeMassage">
+                <div class="form-group offset-md-3 col-md-6">
+                  <label>Address</label>
+                  <input id="location-search" class="form-control" type="text" autocomplete="off" required ng-model="contacts.address" placeholder="Address" select-on-click>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group offset-md-3 col-md-6">
+                  <label>Notes to service provider</label>
+                  <textarea class="about-text form-control" rows="5" ng-model="contacts.notes" placeholder="Notes" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="appointmentUserModal" class="modal overflown-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg animated fadeInDown" data-animation="fadeInDown">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="container modal-item">
+            <div class="about_detail-text mx-2">
+              <div class="card p-3">
+                <div class="card-block text-center">
+                  <p class="card-text">Please login or create an account in WellnessRoom if you don't already have one.</p>
+                </div>
+              </div>
+            </div>
+            <div ng-show="!toSignup">
+              <form class="modal-register">
+                <div class="row">
+                  <div class="form-group col-md-12">
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" ng-model="email">
+                  </div>
+                  <div class="form-group col-md-12">
+                    <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" ng-model="password">
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-default btn-primary btn-block" ng-click="login(email, password)">Log In</button>
+                <span class="or text-center">OR</span>
+                <button fb-login class="btn btn-default btn-facebook btn-block">Log in with Facebook</button>
+                <button g-login class="btn btn-default btn-twitter btn-block">Log in with Google</button>
+              </form>
+              <p class="form-footer">Don’t have an Account? <a class="btn-link nav-link text-primary" ng-click="toSignup = true">Sign up</a></p>
+            </div>
+            <div ng-show="toSignup" ng-if="googleRecaptchaPublicKey">
+              <form class="modal-register" ng-submit="signup(fields)">
+                <div class="row">
+                  <div class="form-group col-md-12 input-icon">
+                    <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                    <input type="text" class="form-control" id="uname" aria-describedby="fullName" placeholder="Full Name" ng-model="fields.fullname">
+                  </div>
+                  <div class="form-group col-md-12 input-icon">
+                    <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" ng-model="fields.email">
+                  </div>
+                  <div class="form-group col-md-12 input-icon">
+                    <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                    <input type="password" class="form-control" id="password" placeholder="Password" ng-model="fields.password">
+                  </div>
+                </div>
+                <div class="row mb-4">
+                  <div class="col-md-12 g-recaptcha" vc-recaptcha key="googleRecaptchaPublicKey" ng-model="fields.recaptchaResponse"></div>
+                </div>
+                <button type="submit" class="btn btn-default btn-primary btn-block">Sign Up</button>
+              </form>
+              <p class="form-footer">Already have an Account? <a class="btn-link nav-link text-primary" ng-click="toSignup = false">Log in</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="modal" id="cropperModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg animated fadeInDown" data-animation="fadeInDown">
+    <div class="modal-content cropper-content">
+      <div class="modal-body" style="border: solid 1px lightgray">
+        <div class="row">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <i class="fa fa-close"></i>
+          </button>
+        </div>
+
+        <div class="row">
+          <span class="about-text">Pick An Image For Your Service</span>
+        </div>
+        <div class="row text-center">
+          <div class="cropArea col-12 mt-2">
+            <ui-cropper class="wr-cropper" image="myImage" area-type="rectangle" result-image-size='[{w: 400,h: 300}]' canvas-scalemode="full-width" result-image="myCroppedImage" init-max-area="false" area-min-size="200" aspect-ratio = "4/3"></ui-cropper>
+          </div>
+          <div class="row col-12 mt-2">
+            <span class="about-text">Result Below</span>
+          </div>
+          <div class="image_container col-12 mt-2">
+            <img class="image_bordered" ng-src="{{myCroppedImage}}"/>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-md-2 mt-1">
+          <label class="button btn btn-primary">Upload new
+            <input type="file" id="fileInput" style="display: none;">
+          </label>
+        </div>
+        <div class="col-md-2 mt-1">
+          <label class="button btn btn-primary" ng-click="saveImage()">Save</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

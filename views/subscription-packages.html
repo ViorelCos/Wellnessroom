@@ -1,0 +1,48 @@
+<div class="main-home">
+  <p class="devider"></p>
+  <div class="container mt-2">
+    <div class="col-sm-8 offset-sm-2 col-xs-12 text-center">
+      <div class="sectionTitle">
+        <h4>Subscription Packages</h4>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row mt-4">
+      <div class="col-md-4" ng-repeat="plan in ordinaryPlans">
+        <div class="card pricing text-center">
+          <h2>{{plan.name}}</h2>
+          <div class="card-header text-center">
+            <span class="price">${{(plan.priceCanadianCents / 100).toFixed(2)}}</span><span class="currency">CAD/Month</span>
+          </div>
+          <div class="card-block">
+            <ul class="list-group no-border text-center">
+              <li class="list-group-item"><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{plan.serviceProviders}} Service Provider</li>
+              <li class="list-group-item"><i class="fa fa-rocket" aria-hidden="true"></i> Unlimited Postings</li>
+            </ul>
+            <a href="/#!/signup/{{plan._id}}" class="btn btn-secondary-outlined btn-default">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-md-4" ng-repeat="plan in premiumPlans">
+        <div class="card pricing text-center">
+          <h2>{{plan.name}}</h2>
+          <div class="card-header text-center">
+            <span class="price">${{(plan.priceCanadianCents / 100).toFixed(2)}}</span><span class="currency">CAD/Month</span>
+          </div>
+          <div class="card-block">
+            <ul class="list-group no-border text-center">
+              <li class="list-group-item"><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{plan.serviceProviders}} Service Provider</li>
+              <li class="list-group-item"><i class="fa fa-rocket" aria-hidden="true"></i> Unlimited Postings</li>
+              <li class="list-group-item"><i class="fa fa-signal" aria-hidden="true"></i> Top of Search Results Page</li>
+            </ul>
+            <a href="/#!/signup/{{plan._id}}" class="btn btn-secondary-outlined btn-default">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="divider"></p>
+</div>

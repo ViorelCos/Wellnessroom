@@ -1,0 +1,89 @@
+<div class="main-home">
+  <p class="devider"></p>
+  <div class="offset-md-2 col-md-8" ng-show="selectedPlan">
+    <div class="row">
+      <div class="offset-md-4 col-md-4">
+        <div class="card pricing text-center">
+          <h2>{{selectedPlan.name}}</h2>
+          <span>{{selectedPlan.description}}</span>
+          <div class="card-header text-center">
+            <span class="price">${{(selectedPlan.priceCanadianCents / 100).toFixed(2)}}</span><span class="currency">CAD/Month</span>
+          </div>
+          <div class="card-block">
+            <ul class="list-group no-border text-center">
+              <li class="list-group-item"><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{selectedPlan.serviceProviders}} Service Provider</li>
+              <li class="list-group-item"><i class="fa fa-rocket" aria-hidden="true"></i> Unlimited Postings</li>
+            </ul>
+            <a class="btn btn-secondary-outlined btn-default" ng-if="hasPlan" ng-click="updatePlan(plan)">Update Plan</a>
+            <a href="/#!/activate-payment/{{userId}}/{{selectedPlan._id}}" class="btn btn-secondary-outlined btn-default" ng-if="!hasPlan">Purchase</a>
+            <a href="/#!/activate-trial/{{userId}}/{{selectedPlan._id}}" class="btn btn-secondary-outlined btn-default" ng-if="!hasPlan">Free Trial</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-2" ng-show="selectedPlan">
+    <div class="col-sm-8 offset-sm-2 col-xs-12 text-center">
+      <div>
+        <a class="btn btn-primary" ng-click="selectedPlan = null;">Pick Another Plan</a>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-2" ng-show="!selectedPlan">
+    <div class="col-sm-8 offset-sm-2 col-xs-12 text-center">
+      <div class="sectionTitle">
+        <h4>Select a Subscription Packages</h4>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-4" ng-show="!selectedPlan">
+    <div class="offset-md-2 col-md-8">
+      <div class="row">
+        <div class="col-md-4" ng-repeat="plan in ordinaryPlans">
+          <div class="card pricing text-center">
+            <h2>{{plan.name}}</h2>
+            <span>{{plan.description}}</span>
+            <div class="card-header text-center">
+              <span class="price">${{(plan.priceCanadianCents / 100).toFixed(2)}}</span><span class="currency">CAD/Month</span>
+            </div>
+            <div class="card-block">
+              <ul class="list-group no-border text-center">
+                <li class="list-group-item"><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{plan.serviceProviders}} Service Provider</li>
+                <li class="list-group-item"><i class="fa fa-rocket" aria-hidden="true"></i> Unlimited Postings</li>
+              </ul>
+              <a class="btn btn-secondary-outlined btn-default" ng-if="hasPlan" ng-click="updatePlan(plan)">Update Plan</a>
+              <a href="/#!/activate-payment/{{userId}}/{{plan._id}}" class="btn btn-secondary-outlined btn-default" ng-if="!hasPlan">Purchase</a>
+              <a href="/#!/activate-trial/{{userId}}/{{plan._id}}" class="btn btn-secondary-outlined btn-default" ng-if="!hasPlan">Free Trial</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-2" ng-show="!selectedPlan">
+    <div class="offset-md-2 col-md-8">
+      <div class="row">
+        <div class="col-md-4" ng-repeat="plan in premiumPlans">
+          <div class="card pricing text-center">
+            <h2>{{plan.name}}</h2>
+            <span>{{plan.description}}</span>
+            <div class="card-header text-center">
+              <span class="price">${{(plan.priceCanadianCents / 100).toFixed(2)}}</span><span class="currency">CAD/Month</span>
+            </div>
+            <div class="card-block">
+              <ul class="list-group no-border text-center">
+                <li class="list-group-item"><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{plan.serviceProviders}} Service Provider</li>
+                <li class="list-group-item"><i class="fa fa-rocket" aria-hidden="true"></i> Unlimited Postings</li>
+                <li class="list-group-item"><i class="fa fa-signal" aria-hidden="true"></i> Top of Search Results Page</li>
+              </ul>
+              <a class="btn btn-secondary-outlined btn-default" ng-if="hasPlan" ng-click="updatePlan(plan)">Update Plan</a>
+              <a href="/#!/activate-payment/{{userId}}/{{plan._id}}" class="btn btn-secondary-outlined btn-default" ng-if="!hasPlan">Purchase</a>
+              <a href="/#!/activate-trial/{{userId}}/{{plan._id}}" class="btn btn-secondary-outlined btn-default" ng-if="!hasPlan">Free Trial</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="divider"></p>
+</div>

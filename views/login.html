@@ -1,0 +1,33 @@
+<div class="container main-home">
+  <div class="row mb-2">
+    <div style="margin-left:20%;width:60%;" class="display-single_element">
+      <h3 class="form_title">Log in your Account</h3>
+      <form class="register">
+        <div class="row">
+          <div class="form-group col-md-12">
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" ng-model="email">
+          </div>
+          <div class="form-group col-md-12">
+            <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" ng-model="password">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-default btn-primary btn-block" ng-click="login(email, password)">Log In</button>
+        <div class="row">
+          <div class="form-check col-md-6">
+            <!--
+            <input id="checkbox-2" class="checkbox-custom form-check-input" name="checkbox-2" type="checkbox">
+            <label for="checkbox-2" class="checkbox-custom-label form-check-label ">Remember me</label>
+            -->
+          </div>
+          <div class="text-right">
+            <a href="/#!/forgot-password" class="btn-link">Forgot password ?</a>
+          </div>
+        </div>
+        <span class="or text-center">OR</span>
+        <button fb-login class="btn btn-default btn-facebook btn-block">Log in with Facebook</button>
+        <button g-login class="btn btn-default btn-twitter btn-block">Log in with Google</button>
+      </form>
+      <p class="form-footer">Don’t have an Account? <a href="{{signupLink}}" class="btn-link text-primary">Sign up</a></p>
+    </div>
+  </div>
+</div>

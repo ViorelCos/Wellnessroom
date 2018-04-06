@@ -1,0 +1,15 @@
+<div>
+  <div class="row">
+    <div class="col-md-4 offset-sm-1">
+      <select class="form-control same-height-select" ng-options="service._id as service.name for service in services" ng-model="selectedServicee">
+        <option value="">Select service</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <input id="location-search" class="form-control" type="text" autocomplete="off" ng-model="location" select-on-click>
+    </div>
+    <div class="col-md-2 text-center" style="margin-left:8%;">
+      <a class="btn btn-default btn-primary pull-right-md" ng-click="search(selectedServicee)">Search</a>
+    </div>
+  </div>
+</div>

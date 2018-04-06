@@ -1,0 +1,75 @@
+<!--
+<div class="container main-home">
+  <div class="row">
+    <div class="col-sm-8 offset-sm-2 col-xs-12 text-center">
+      <div class="sectionTitle">
+        <h2>{{user.fullname}}</h2>
+      </div>
+      <div class="seperator">
+        <img src="site/img/snowflake.svg"/>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8 offset-sm-2 col-xs-12 text-center">
+      <h4>Subscriptions</h4>
+      <p class="devider devider_narrow devider_thik devider_primary"></p>
+    </div>
+  </div>
+  <div class="row my-2" ng-repeat="order in orders" ng-init="plan = plansMap[order.planId]">
+    <div class="col-12 text-center">
+      <span ng-style="{'text-decoration': $index !== orders.length - 1 ? 'line-through' : 'normal', 'font-weight': $index === orders.length - 1 ? 'bold' : 'normal'}">WellnessRoom "{{plan.name}} {{plan.description}}" purchased on {{formatDate(order.date)}}{{maybeTrial(order)}}</span>
+    </div>
+  </div>
+  <div class="row my-2">
+    <div class="col-sm-2 offset-sm-4 col-xs-12">
+      <a class="btn btn-primary" href="/#!/activate/{{user._id}}">Change</a>
+    </div>
+    <div class="col-sm-2 offset-sm-1 col-xs-12">
+      <a class="btn btn-danger" ng-click="cancel()">Unsubscribe</a>
+    </div>
+  </div>
+</div>
+-->
+<div class="main-home">
+  <div class="container">
+    <div class="row mt-4">
+      <div class="col-md-4" ng-repeat="plan in ordinaryPlans">
+        <div class="card pricing text-center" ng-style="{border: plan._id === order.planId ? 'solid #7bd1df' : 'inherit'}">
+          <h2>{{plan.name}}</h2>
+          <div class="card-header text-center">
+            <span class="price">${{(plan.priceCanadianCents / 100).toFixed(2)}}</span><span class="currency">CAD/Month</span>
+          </div>
+          <div class="card-block">
+            <ul class="list-group no-border text-center">
+              <li class="list-group-item"><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{plan.serviceProviders}} Service Provider</li>
+              <li class="list-group-item"><i class="fa fa-rocket" aria-hidden="true"></i> Unlimited Postings</li>
+            </ul>
+            <a class="btn btn-secondary-outlined btn-default" ng-if="plan._id === order.planId" ng-click="cancel()">Unsubscribe</a>
+            <a class="btn btn-secondary-outlined btn-default" ng-if="plan._id !== order.planId" ng-click="update(plan)">Change</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-md-4" ng-repeat="plan in premiumPlans">
+        <div class="card pricing text-center" ng-style="{border: plan._id === order.planId ? 'solid #7bd1df' : 'inherit'}">
+          <h2>{{plan.name}}</h2>
+          <div class="card-header text-center">
+            <span class="price">${{(plan.priceCanadianCents / 100).toFixed(2)}}</span><span class="currency">CAD/Month</span>
+          </div>
+          <div class="card-block">
+            <ul class="list-group no-border text-center">
+              <li class="list-group-item"><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{plan.serviceProviders}} Service Provider</li>
+              <li class="list-group-item"><i class="fa fa-rocket" aria-hidden="true"></i> Unlimited Postings</li>
+              <li class="list-group-item"><i class="fa fa-signal" aria-hidden="true"></i> Top of Search Results Page</li>
+            </ul>
+            <a class="btn btn-secondary-outlined btn-default" ng-if="plan._id === order.planId" ng-click="cancel()">Unsubscribe</a>
+            <a class="btn btn-secondary-outlined btn-default" ng-if="plan._id !== order.planId" ng-click="update(plan)">Change</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="divider"></p>
+</div>

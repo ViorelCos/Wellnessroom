@@ -1,0 +1,21 @@
+<div class="container profile">
+  <div class="row">
+    <p class="devider devider_full col-12">
+    <div class="text-center col-12">
+      <span class="h4">Appointments</span>
+      <p class="devider devider_narrow devider_thik devider_primary"></p>
+      <ul class="list-group no-border">
+        <li class="list-group-item" ng-repeat="appointment in appointments | orderBy:'-slot'">
+          <div class="row">
+            <div ng-class="{'col-md-12' : isClient, 'col-md-10': !isClient}">
+              <a class="list-link">{{maybeFullname(appointment)}}{{maybeEmail(appointment.user)}}at {{formatDate(appointment.slot)}} for {{servicesProvidersMap[appointment.serviceProvider].name}} ({{getStatus(appointment)}})</a>
+            </div>
+            <div class="col-md-2" ng-show="!isClient">
+              <a class="btn btn-small" ng-click="canCancel(appointment) && cancel(appointment)" ng-class="{'btn-danger': canCancel(appointment), 'disabled': !canCancel(appointment)}">Cancel</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

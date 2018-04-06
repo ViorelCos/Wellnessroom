@@ -1,0 +1,637 @@
+.wellnessroom {
+	background-image: url('/img/slider/slider-white1.jpg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center 0;
+}
+
+.wellnessroom .header {
+  background-color: transparent;
+}
+
+.wellnessroom .header nav {
+  box-shadow: none;
+}
+
+.seperator img {
+  width: 34px;
+  height: 44px;
+}
+
+.main-nav .navbar-brand.logo {
+  position: relative;
+}
+
+.custom-icon {
+  color: #7bd1df;
+}
+
+.spaced-icon {
+  margin: 15px;
+  cursor: pointer;
+}
+
+.action-icon {
+  cursor: pointer;
+}
+
+.offset-scheduling-arrow {
+  margin-left: -30px;
+}
+
+.trailing-scheduling-arrow {
+  margin-left: auto;
+}
+
+.offset-non-standard-icon {
+  margin-left: 2.5px;
+}
+
+.list-group-item i.remove-icon {
+  float: right;
+  font-size: 1.5em;
+}
+
+.schedule-period {
+  display: inline-block;
+  margin: auto;
+}
+
+.modal-top-button {
+  text-align: right;
+}
+
+.main-wrapper a:hover, .main-wrapper a:focus {
+  color: rgb(34, 34, 34);;
+}
+
+.search-container {
+  padding: 10px;
+}
+
+.search-container-heading {
+  padding-top: 30px;
+}
+
+.spaced-list {
+  margin-bottom: 20px;
+}
+
+.cropper-content {
+  padding: 15px;
+}
+
+.cropArea {
+  overflow: hidden;
+  /* width: 100%; */
+}
+
+.profile-image {
+  cursor: pointer;
+}
+
+.wr-cropper {
+  display: block;
+  text-align: center;
+}
+
+.about-text {
+  resize: none;
+}
+
+.text-beside-button {
+  vertical-align: bottom;
+  line-height: 100%;
+	color: black;
+}
+
+.offering-image {
+  height: 200px;
+  background-size: cover;
+}
+
+.offering-title {
+  color: white;
+  background-color: rgb(123, 209, 223);
+  text-align: center;
+}
+
+.offering .offering-title:hover {
+  color: white;
+}
+
+/*
+.offering .card-block {
+  padding: 15px 15px;
+  min-height: 180px;
+}
+*/
+
+/* Hack to get bootstrap3-typeahead to work */
+.wellnessroom .search-container .dropdown-menu,
+.wellnessroom .profile .dropdown-menu, .wellnessroom #appointmentContactModal .dropdown-menu {
+  -webkit-transform: scale(1, 1);
+  transform: scale(1, 1);
+  opacity: 1;
+  background-color: white;
+}
+
+gm-map {
+  display: block;
+  width: 500px;
+  height: 500px;
+}
+
+.my-location {
+  background: blue;
+}
+
+.nav-link {
+  cursor: pointer;
+}
+
+.legend {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.slot-button {
+  padding: 0;
+  text-align: center;
+  /* background-color: transparent;
+  color: #222222; */
+  border: 1px solid #dedede;
+  width: 100%;
+}
+
+.wellnessroom .main-wrapper {
+  overflow: inherit;
+}
+
+.fi-molar-1::before {
+  height: 20px;
+}
+
+.fi-spinal-column::before {
+  height: 20px;
+}
+
+.main-home {
+  background-color: white;
+}
+
+.main-client {
+  background-color: white;
+  overflow-x: hidden;
+}
+
+.white-background-xs {
+  background-color: white;
+}
+
+.divider {
+  background-color: white;
+  line-height: 26px;
+  height: 26px;
+}
+
+.wellnessroom .contact .contact_item-container {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.wellnessroom .team-card {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.swap .offering-front-image {
+  display: none;
+}
+
+.swap .offering-back-image {
+  display: block;
+}
+
+.offering-back-image {
+  display: none;
+}
+
+.wellnessroom .star-rating div {
+  display: inline-block;
+}
+
+.wellnessroom .round-bordered {
+  border: 1px solid lightgray;
+}
+
+.small-logo {
+  width: 100%;
+  margin: 25% 0;
+  padding: 10px;
+}
+
+.stripe-input {
+  padding-top: 14px;
+/*  border-bottom: 1px solid black; */
+}
+
+.StripeElement {
+  border-radius: 0;
+}
+
+.StripeElement--focus {
+  border-color: #7bd1df;
+}
+
+.spanner-image {
+  position: relative;
+  max-width: 100%;
+  visibility: hidden;
+}
+
+.client-image {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center top;
+  max-height: 300px;
+  margin: auto;
+}
+
+.client-image-fullw {
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.social-link {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+li a.list-link {
+  display: inline-block;
+}
+
+.search-bar {
+  position: fixed;
+  z-index: 1000;
+}
+
+.search-bar > div > div {
+  background-color: #f5f5f5;
+}
+
+.search-bar-top {
+  border-radius: 5px 5px 0 0;
+}
+
+.search-bar-bottom {
+  border-radius: 0 0 5px 5px;
+}
+
+.search-bar gm-map {
+  height: 250px;
+}
+
+.search-bar .dropdown-menu {
+  height: 200px;
+  overflow: auto;
+}
+
+.search-bar .dropdown-toggle {
+  /*
+  width: 150px;
+  */
+}
+
+.search-bar star-rating-comp {
+  display: inline-block;
+}
+
+.search-bar input[type=checkbox] {
+  vertical-align: super;
+}
+
+.overflown-modal {
+  overflow: auto;
+}
+
+.healthcare-professionals-menu {
+  background-color: #49c32c;
+  border: 1px solid #49c32c;
+}
+
+.healthcare-professionals-menu:hover,
+.healthcare-professionals-menu:focus {
+  color: white !important;
+}
+
+.text-next-to-dropdown {
+  vertical-align: baseline;
+}
+
+.alternate-gray {
+  background-color: #f5f5f5;
+}
+
+.list-group-item.no-y-padding {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.image-container-helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.image-container {
+  height: 255px;
+  max-height: 255px;
+}
+
+.image-container img {
+  height: 100%;
+  max-width: 98%;
+  vertical-align: middle;
+}
+
+@media (max-width: 320px) {
+  .image-container img {
+    height: 200px;
+    max-width: 98%;
+    vertical-align: middle;
+  }
+}
+
+.inline-rating {
+  display: inline;
+}
+
+.inline-label {
+  display: inline;
+}
+
+.wellnessroom select.same-height-select {
+  padding-bottom: 18px;
+}
+
+.wellnessroom .about-bordered {
+  border-top: 1px solid #e5e5e5;
+}
+
+.search-results {
+  min-height: 400px;
+}
+
+@media (max-width: 768px) {
+  .search-results {
+    min-height: 100px;
+  }
+  .main-nav .navbar-brand.logo {
+    margin-top: 10px;
+    height: 40px;
+    position: static;
+    -webkit-transform: none;
+    transform: none;
+  }
+
+  .main-nav .navbar-brand.logo img {
+    width: 200px;
+  }
+
+  .swap .offering-front-image {
+    display: block;
+  }
+
+  .swap .offering-back-image {
+    display: none;
+  }
+
+  .white-background-xs {
+    background-color: transparent;
+  }
+
+  .search-bar .dropdown-menu {
+    background-color: white;
+  }
+
+  .collapse-sm {
+    display: inline-block;
+  }
+
+  .search-bar-time .bar {
+    padding: 0;
+  }
+
+  .sp-and-clinic {
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .pull-right-md {
+    float: right;
+    margin-right: 60px;
+  }
+  .pricing_image-card .card_img .overlay h2 {
+    font-size: 20px;
+  }
+
+  form.modal-register {
+    border: 1px solid #e5e5e5;
+    border-top: 0px;
+    padding: 25px 30px;
+  }
+
+  form.modal-register .form-check label.checkbox-custom-label {
+    color: #222222;
+    margin-bottom: 0px;
+  }
+
+  form.modal-register .form-check label.checkbox-custom-label:before {
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+  }
+
+  form.modal-register .form-check .checkbox-custom:checked + .checkbox-custom-label:before {
+    font-size: 12px;
+  }
+
+  form.modal-register .btn-link {
+    color: #439fdb;
+    text-decoration: none;
+    font-size: 15px;
+    display: inline-block;
+  }
+
+  form.modal-register span.or {
+    position: relative;
+    font-weight: 700;
+  }
+
+  form.modal-register span.or:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 47%;
+    background: #e5e5e5;
+    height: 1px;
+    top: 50%;
+  }
+
+  form.modal-register span.or:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 47%;
+    background: #e5e5e5;
+    height: 1px;
+    top: 50%;
+  }
+
+  form.modal-register .btn {
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  form.modal-register .btn.btn-facebook, form.modal-register .btn.btn-twitter {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-transform: unset;
+  }
+}
+
+@media (max-width: 400px) {
+  .g-recaptcha {
+    transform: scale(0.77);
+    -webkit-transform: scale(0.77);
+    transform-origin: 10px 0;
+    -webkit-transform-origin: 10px 0;
+  }
+
+  .pull-right-md {
+    margin-top: 10px;
+  }
+}
+
+@media (min-width: 320px) {
+  .fi-molar-1::before {
+    font-size: 0.7em;
+  }
+
+  .fi-spinal-column::before {
+    font-size: 0.7em;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .search-results {
+    width:100%!important;
+    margin:auto!important;
+  }
+  .search-bar {
+    max-width: 100%!important;
+  }
+  .search-bar .dropdown-toggle {
+    width: 147px!important;
+  }
+  .search-bar-map {
+    display: none;
+  }
+  .search-bar-rating {
+    display: none;
+  }
+  .search-bar {
+    position: static;
+  }
+  /* .image-container {
+    height: 150px;
+  } */
+}
+
+.service-card-img{
+  width: 280px!important;
+  height: 210px!important;
+}  
+
+@media (max-width: 768px) {
+  .provider-profile-image{
+    width: 200px!important;
+    height: 150px!important;
+  }
+}
+
+@media (min-width: 769px) {
+  .provider-profile-image{
+    width: 280px!important;
+    height: 210px!important;
+  }  
+}
+
+@media (max-width: 320px) {
+  .service-card-img{
+    width: 200px!important;
+    height: 150px!important;
+  }
+}
+
+@media (max-width: 320px) {
+  .service-card-img{
+    width: 200px!important;
+    height: 150px!important;
+  }
+}
+
+@media (max-width: 425px) {
+  .service-card-img{
+    width: 280px!important;
+    height: 210px!important;
+  }
+}
+
+@media (max-width: 768px) {
+  .service-card-img{
+    width: 200px!important;
+    height: 150px!important;
+  }  
+}
+
+@media (max-width: 425px) {
+  .card-overlay-text{
+    font-size: 18px!important;
+  }
+}
+
+@media (min-width: 426px) {
+  .card-overlay-text{
+    font-size: 22px!important;
+  }  
+}
+
+
+/* @media only screen and (max-width: 425px) {
+  .search-result-div{
+    margin-left:0px;
+    margin-right:0px;
+    padding-right:20px;
+    padding-left:5px;
+  }
+}
+
+@media only screen and (min-width: 426px) and (max-width: 600px) {
+  .search-result-div{
+    margin-left:0px;
+    margin-right:0px;
+    padding-right:0px;
+    padding-left:0px;
+  }
+} */

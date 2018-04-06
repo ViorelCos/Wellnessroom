@@ -1,0 +1,31 @@
+<div class="modal" id="durationModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-md animated fadeInDown" data-animation="fadeInDown">
+    <div class="modal-content cropper-content">
+      <div class="modal-body">
+        <button type="button" class="close push-xs-right" data-dismiss="modal" aria-label="Close">
+          <i class="fa fa-close"></i>
+        </button>
+        <div class="row mt-3">
+          <span>Pick Duration</span>
+        </div>
+        <div class="row mt-1">
+          <a class="btn btn-sm slot-button col-12 mt-1" ng-class="{'btn-primary': isSelected(duration.mask), 'btn-secondary-outlined': !isSelected(duration.mask)}" ng-click="toggleDuration(duration.mask)" ng-repeat="duration in durations">{{duration.label}}</a>
+        </div>
+        <div class="row mt-2 text-center">
+          <div class="col-md-4">
+            <button class="button btn btn-primary" ng-click="cancel()">Cancel</button>
+          </div>
+          <div ng-show="!pickMode" class="col-md-4">
+            <button class="button btn btn-primary" ng-click="clearSlot()">Remove</button>
+          </div>
+          <div ng-show="!pickMode" class="col-md-4">
+            <button class="button btn btn-primary" ng-click="saveDuration()">Save</button>
+          </div>
+          <div ng-show="pickMode" class="col-md-4">
+            <button class="button btn btn-primary" ng-click="saveDuration()">Book</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

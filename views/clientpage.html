@@ -1,0 +1,218 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="client-image col-10 image-container" style="background-image: url('{{selectedServiceProvider.image}}');">
+          <img style="width:100%;height:100%;" class="spanner-image" src="{{selectedServiceProvider.image}}">
+          </img>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="sectionTitle sp-and-clinic">
+        <span class="h4">{{selectedServiceProvider.name}}</span>
+      </div>
+      <div class="about_detail-text m-2">
+        <div class="card">
+          <div class="card-block">
+            <div class="mt-2">
+              <p>{{servicesMap[selectedServiceProvider.service].name}}</p>
+            </div>
+            <div class="mt-2">
+              <a href="" class="btn btn-primary" ng-click="scrollToPricingPlan()">Pricing Plan</a>
+            </div>
+            <div class="mt-2">
+              <a href="" class="btn btn-primary" data-toggle="modal" data-target="#appointmentModal" ng-click="selectServiceProvider(selectedServiceProvider._id)">Request Appointment</a>
+            <p class="mt-2">{{utils.limitTo(selectedServiceProvider.about, 350)}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="text-align:center;margin-top:1%;margin-bottom:1%;" class="padding">
+  <h2 style="font-size:37px;">{{client.fullname}}</h2>
+</div>
+<div class="container alternate-gray">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="row">
+        <div class="client-image offset-1 col-10" style="background-image: url('{{client.image}}');" alt="Service Provider Image">
+          <ul class="list-inline socialLink text-center social-link" ng-show="client.facebook || client.instagram">
+            <li class="list-inline-item pt-2">
+              <a href="{{client.facebook}}" target="blank" ng-show="client.facebook"> <i class="fa fa-facebook"></i></a>
+              <a href="{{client.instagram}}" target="blank" ng-show="client.instagram"> <i class="fa fa-instagram"></i></a>
+            </li>
+          </ul>
+          <img class="spanner-image" src="{{client.image}}">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 offset-md-1 white-background-xs">
+      <div class="about_detail-text mt-2">
+        <div class="card p-3">
+          <div class="card-block text-justified">
+            <span class="h4">About Us</span>
+            <p class="card-text" style="overflow:auto; white-space:wrap;">{{client.about}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="devider devider_narrow devider_thik devider_primary"></p>
+<div class="main-client">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 white-background-xs">
+        <div class="about_detail-text mt-2">
+          <div class="card pt-3 px-3">
+            <div class="card-block text-justified">
+              <span class="h4">Service Available:</span>
+            </div>
+            <ul class="list-group no-border pt-4">
+              <li class="list-group-item" ng-repeat="service in availableServices">
+                <a href="#">
+                  <i class="fa fa-dot-circle-o"></i> {{service}}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2" ng-show="otherServiceProviders.length">
+      <div class="col-sm-8 offset-sm-2 col-xs-12 text-center">
+        <span class="h4">Service Providers</span>
+      </div>
+    </div>
+    <div class="row mt-2 text-center"  ng-show="otherServiceProviders.length">
+      <div class="col-md-4" ng-repeat="serviceProvider in otherServiceProviders" ng-class="{'offset-md-4': otherServiceProviders.length === 1, 'offset-md-2': otherServiceProviders.length === 2 && $index === 0}">
+        <div style="height: 100%" class="round-bordered">
+          <div class="about_detail-text mx-2">
+            <div class="card p-3">
+              <div class="card_img">
+                <img class="img-full service-card-img" src="{{serviceProvider.image || '/site/img/profile-empty -square.png'}}" alt="Service Provider Image">
+              </div>
+              <div class="card-block text-center">
+                <a href="#"><h3 class="card-title">{{serviceProvider.name}}</h3></a>
+                <span>
+                  <div style="height:34px;">
+                  {{servicesMap[serviceProvider.service].name}}
+                  </div>
+                </span>
+                <!-- <p class="card-text">{{utils.limitTo(serviceProvider.about, 75)}}</p> -->
+                <a style ="display: block;" href="/#!/clientpage/{{client._id}}/serviceprovider/{{serviceProvider._id}}" class="btn btn-primary mt-2">Select</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="price-plan" class="row my-2 text-center" ng-repeat="pricePlanTuple in pricePlanTuples">
+      <div class="col-md-4" ng-class="{'offset-md-4': pricePlanTuple.length === 1, 'offset-md-2': pricePlanTuple.length === 2 && $index === 0}" ng-repeat="pricePlan in pricePlanTuple">
+				<div style="height:100%;" class="card pricing_image-card">
+					<div class="card_img" style="height:110px">
+						<img class="card-img img-full" src="/img/profile/work6.jpg" alt="Card image">
+						<div class="overlay text-center">
+              <h2 class = "card-overlay-text" style="padding-left:5px; padding-right:5px;">{{pricePlan.name}}</h2>
+              <!--
+							<span>Plan Short Description</span>
+              -->
+						</div>
+					</div>
+					<div class="card-block text-center">
+            <div style="overflow:hidden;margin-top:7%;" class="circle">
+              <span style="font-size:25px;" class="price">${{pricePlan.price}}</span>
+              <span class="tag">per session</span>
+            </div>
+						<p>{{pricePlan.description}}</p>
+            <!--
+						<a class="btn btn-secondary-outlined btn-default">Get Started</a>
+            -->
+					</div>
+				</div>
+			</div>
+    </div>
+    <div class="col-md-6 offset-md-3 mt-2 text-center">
+      <div class="seperator"><img src="site/img/snowflake.svg"/></div>
+    </div>
+    <div class="col-md-6 offset-md-3 mt-2" ng-if="client.coords">
+      <gm-map options="{center: [client.coords[0], client.coords[1]], zoom: 14, mapTypeId: google.maps.MapTypeId.ROADMAP}" readonly>
+        <gm-marker class="my-location" options="{position:  [client.coords[0], client.coords[1]]}">
+        </gm-marker>
+      </gm-map>
+    </div>
+  </div>
+</div>
+<p class="devider devider_narrow devider_thik devider_primary"></p>
+<div class="main-client" ng-show="rating >= 0">
+  <div class="container">
+    <div class="row mb-2">
+      <div class="about-text-container offset-md-3 col-md-6 text-center">
+        <span class="h4">Overall Rating</span> {{rating}} out of 5
+      </div>
+    </div>
+    <div class="row mb">
+      <div class="about-text-container offset-md-3 col-md-6">
+        <h4>Customer reviews:</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 offset-sm-3">
+        <ul class="list-group no-border">
+          <li class="list-group-item mt-2" ng-repeat="appointment in reviewed">
+            {{$index + 1}}. <star-rating-comp class="star-rating" rating="appointment.rating" read-only="true" size="'medium'"></star-rating-comp>
+            <p>{{appointment.review}}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="my-4">
+  <section class="contact">
+    <div class="container">
+      <div class="contact_item-container">
+        <div class="row">
+          <div class="offset-md-1 col-md-4">
+            <div class="contact_middle">
+              <h3>Open Hours</h3>
+              <ul>
+                <li>{{client.hoursOfOperation}}</li>
+                <li>{{client.address}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="offset-md-2 col-md-4">
+            <div class="contact_right">
+              <h3>Contacts</h3>
+              <ul>
+                <li><a href="mailto:{{client.email}}"><i class="fa fa-envelope"></i> {{client.email}}</a></li>
+                <li><a href="tel:{{client.phone}}"><i class="fa fa-phone"></i> {{client.phone}}</a></li>
+                <li><a href="{{client.website}}" target="blank"><i class="fa fa-hand-pointer-o"></i> Website</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div id="appointmentModal" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div style="margin:7% auto;" class="modal-dialog modal-lg animated fadeInDown" data-animation="fadeInDown">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close push-xs-right" data-dismiss="modal" aria-label="Close">
+            <i class="fa fa-close"></i>
+          </button>
+          <div class="container modal-item">
+            <x-appointment client="client" service="selectedService" service-provider="selectedServiceProvider" new-users-can-book="client.newUsersCanBook"></x-appointment>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
